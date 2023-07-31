@@ -23,22 +23,22 @@ class _MyBookScreen extends State<MyBookScreen> {
     );
   }
 
-  Widget getBody() {
+    Widget getBody() {
     return SafeArea(
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(15),
+        padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             getSearchAndCart(),
-            const SizedBox(
+            SizedBox(
               height: 30,
             ),
             continueReading(),
-            const SizedBox(
+            SizedBox(
               height: 30,
             ),
             getUnread()
@@ -59,8 +59,8 @@ class _MyBookScreen extends State<MyBookScreen> {
           decoration: BoxDecoration(
               color: grey.withOpacity(0.25),
               borderRadius: BorderRadius.circular(12)),
-          child: const Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 0),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15, bottom: 0),
             child: TextField(
               cursorColor: primary,
               decoration: InputDecoration(
@@ -72,21 +72,21 @@ class _MyBookScreen extends State<MyBookScreen> {
         ),
         Flexible(
           child: IconButton(
-            onPressed: () {},
-            icon: const badges.Badge(
-              badgeContent: Text(
-                "3",
-                style: TextStyle(color: white),
-              ),
-              child: Icon(
-                LineIcons.shoppingBag,
-                size: 25,
-              ),
-              badgeStyle: badges.BadgeStyle(
-                badgeColor: primary1,
-              ),
-            ),
-          ),
+              onPressed: () {},
+              icon: badges.Badge(
+                // badgeColor: primary,
+                badgeContent: Text(
+                  "3",
+                  style: TextStyle(color: white),
+                ),
+                child: Icon(
+                  LineIcons.shoppingBag,
+                  size: 25,
+                ),
+                badgeStyle: badges.BadgeStyle(
+                  badgeColor: primary1,
+                ),
+              )),
         )
       ],
     );
@@ -97,8 +97,8 @@ class _MyBookScreen extends State<MyBookScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Continue reading (${continueReadingJson.length})",
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-        const SizedBox(
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        SizedBox(
           height: 15,
         ),
         SingleChildScrollView(
@@ -139,7 +139,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(12)),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -147,11 +147,11 @@ class _MyBookScreen extends State<MyBookScreen> {
                         child: Text(
                           continueReadingJson[index]['title'],
                           maxLines: 1,
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                       Container(
@@ -163,7 +163,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                               fontSize: 13, color: black.withOpacity(0.4)),
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
                       Container(
@@ -191,7 +191,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                                 ],
                               ),
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: 5,
                             ),
                             Text(
@@ -220,8 +220,8 @@ class _MyBookScreen extends State<MyBookScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Unread (${unReadJson.length})",
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-        const SizedBox(
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+        SizedBox(
           height: 15,
         ),
         Column(
@@ -254,7 +254,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                                 image: NetworkImage(unReadJson[index]['img']),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(12))),
-                    const SizedBox(
+                    SizedBox(
                       width: 12,
                     ),
                     Flexible(
@@ -264,10 +264,10 @@ class _MyBookScreen extends State<MyBookScreen> {
                       children: [
                         Text(
                           unReadJson[index]['title'],
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.w600),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 15,
                         ),
                         Text(
@@ -275,7 +275,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                           style: TextStyle(
                               fontSize: 13, color: black.withOpacity(0.4)),
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: 15,
                         ),
                         Container(
@@ -291,8 +291,8 @@ class _MyBookScreen extends State<MyBookScreen> {
                                 allowHalfRating: true,
                                 itemCount: 5,
                                 itemSize: 14,
-                                itemPadding: const EdgeInsets.only(right: 2),
-                                itemBuilder: (context, _) => const Icon(
+                                itemPadding: EdgeInsets.only(right: 2),
+                                itemBuilder: (context, _) => Icon(
                                   Icons.star,
                                   color: danger,
                                 ),
@@ -302,7 +302,7 @@ class _MyBookScreen extends State<MyBookScreen> {
                               ),
                               Text(
                                 "(${unReadJson[index]['rate']})",
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: danger,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),

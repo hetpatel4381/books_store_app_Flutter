@@ -6,9 +6,14 @@ import '../json/home_json.dart';
 import '../theme/colors.dart';
 import 'book_detail_page.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List apiData = [
     {
       "name": "Muscle",
@@ -273,67 +278,6 @@ class getBody extends StatelessWidget {
                 }),
               ),
             ),
-
-            // Container(
-            //   width: MediaQuery.of(context).size.width,
-            //   height: 250,
-            //   child: ListView.builder(
-            //       itemCount: recommendationsList.length,
-            //       scrollDirection: Axis.horizontal,
-            //       shrinkWrap: true,
-            //       physics: BouncingScrollPhysics(),
-            //       itemBuilder: (BuildContext context, int index) {
-            //         return Container(
-            //           child: Column(
-            //             children: [
-            //               //Book Image
-            //               Container(
-            //                 width: 200,
-            //                 height: 190,
-            //                 margin: const EdgeInsets.only(right: 10),
-            //                 decoration: BoxDecoration(
-            //                   // color: greyLight,
-            //                   borderRadius: BorderRadius.circular(20),
-            //                   border: Border.all(color: Colors.black.withOpacity(0.1))
-            //                 ),
-            //                 child: Padding(
-            //                   padding: const EdgeInsets.all(15.0),
-            //                   child:
-            //                       Image.network("${recommendationsList[index]['img']}", fit: BoxFit.fill,),
-            //                 ),
-            //               ),
-
-            //               //Title and Author
-            //               Container(
-            //                 margin: EdgeInsets.only(right: 19),
-            //                 // color: Colors.blue,
-            //                 width: 180,
-            //                 child: Row(children: [
-            //                   Column(
-            //                     crossAxisAlignment: CrossAxisAlignment.start,
-            //                     children: [
-            //                       Text(
-            //                         "${recommendationsList[index]['title']}",
-            //                         style: const TextStyle(
-            //                             fontWeight: FontWeight.w600),
-            //                       ),
-            //                       Text(
-            //                         "By ${recommendationsList[index]['author_name']}",
-            //                         style: TextStyle(
-            //                             color: Colors.green.shade300),
-            //                       ),
-            //                     ],
-            //                   ),
-            //                   IconButton(
-            //                       onPressed: () {},
-            //                       icon: const Icon(Icons.bookmark_border)),
-            //                 ]),
-            //               ),
-            //             ],
-            //           ),
-            //         );
-            //       }),
-            // ),
 
             //Title Trending
             Row(

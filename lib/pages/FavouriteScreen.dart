@@ -90,6 +90,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
       spacing: 15,
       runSpacing: 20,
       children: List.generate(favouriteBooksJson.length, (index) {
+        double rate =
+            double.tryParse(favouriteBooksJson[index]['rate'] ?? '0.0') ?? 0.0;
         return GestureDetector(
           onTap: () {
             Navigator.push(
@@ -168,7 +170,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                   children: [
                     RatingBar.builder(
                       ignoreGestures: true,
-                      initialRating: favouriteBooksJson[index]['rate'],
+                      initialRating: rate,
                       minRating: 1,
                       direction: Axis.horizontal,
                       allowHalfRating: true,

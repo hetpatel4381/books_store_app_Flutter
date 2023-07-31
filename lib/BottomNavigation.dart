@@ -39,7 +39,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         HomeScreen(),
         MyBookScreen(),
         StoreScreen(),
-        const FavouriteScreen(),
+        FavouriteScreen(),
       ],
     );
   }

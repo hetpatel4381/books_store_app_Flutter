@@ -2,7 +2,6 @@ import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../json/home_json.dart';
 import '../theme/colors.dart';
@@ -33,6 +32,12 @@ class BookDetailPage extends StatefulWidget {
 }
 
 class _BookDetailPageState extends State<BookDetailPage> {
+
+  List themes = [
+    Color(0xFFFFFFFF),
+    Color(0xFF000000),
+    Color(0xFFf0cea0),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +89,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back_ios,
                                   color: white,
                                   size: 22,
@@ -93,7 +98,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                               children: [
                                 IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.bookmark,
                                       color: white,
                                     )),
@@ -108,25 +113,318 @@ class _BookDetailPageState extends State<BookDetailPage> {
                                                     subTitle: widget.subTitle,
                                                   )));
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.headphones,
                                       color: white,
                                     )),
                                 IconButton(
-                                    onPressed: () {
-                                      getBottomSheetListening();
-                                    },
-                                    icon: Icon(
-                                      Icons.settings,
-                                      color: white,
-                                    )),
+                                  onPressed: () {
+                                    print("bottomsheet");
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        // Add the correct parameter type
+                                        return Container(
+                                          child: SingleChildScrollView(
+                                            controller: ScrollController(
+                                              initialScrollOffset: 0.3,
+                                            ),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 250,
+                                              decoration: BoxDecoration(
+                                                  color: primary
+                                                      .withOpacity(0.15)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 25,
+                                                        horizontal: 15),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Row(
+                                                          children:
+                                                              List.generate(
+                                                                  themes.length,
+                                                                  (index) {
+                                                            if (index == 0) {
+                                                              return Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .only(
+                                                                        right:
+                                                                            12),
+                                                                child:
+                                                                    Container(
+                                                                  width: 40,
+                                                                  height: 40,
+                                                                  decoration: BoxDecoration(
+                                                                      border: Border.all(
+                                                                          color: black.withOpacity(
+                                                                              0.7),
+                                                                          width:
+                                                                              0.5),
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      color: themes[
+                                                                          index]),
+                                                                ),
+                                                              );
+                                                            }
+                                                            return Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      right:
+                                                                          12),
+                                                              child: Container(
+                                                                width: 30,
+                                                                height: 30,
+                                                                decoration: BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color: themes[
+                                                                        index]),
+                                                              ),
+                                                            );
+                                                          }),
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Container(
+                                                              width: 40,
+                                                              height: 40,
+                                                              decoration: BoxDecoration(
+                                                                  color:
+                                                                      primary,
+                                                                  shape: BoxShape
+                                                                      .circle),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "TT",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          17,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              width: 12,
+                                                            ),
+                                                            Container(
+                                                              width: 40,
+                                                              height: 40,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color:
+                                                                            primary,
+                                                                      ),
+                                                                      shape: BoxShape
+                                                                          .circle),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Tt",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          17,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  top: 4),
+                                                          child: Container(
+                                                            height: 4,
+                                                            decoration: BoxDecoration(
+                                                                color: black
+                                                                    .withOpacity(
+                                                                        0.1),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5)),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  top: 4),
+                                                          child: Container(
+                                                            height: 4,
+                                                            width: 150,
+                                                            decoration: BoxDecoration(
+                                                                color: primary,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5)),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 145),
+                                                          child: Container(
+                                                            width: 12,
+                                                            height: 12,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color:
+                                                                        primary),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          "Aa",
+                                                          style: TextStyle(
+                                                              fontSize: 13,
+                                                              color: black
+                                                                  .withOpacity(
+                                                                      0.8)),
+                                                        ),
+                                                        Text(
+                                                          "Aa",
+                                                          style: TextStyle(
+                                                              fontSize: 20,
+                                                              color: black
+                                                                  .withOpacity(
+                                                                      0.8)),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  top: 4),
+                                                          child: Container(
+                                                            height: 4,
+                                                            decoration: BoxDecoration(
+                                                                color: black
+                                                                    .withOpacity(
+                                                                        0.1),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5)),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  top: 4),
+                                                          child: Container(
+                                                            height: 4,
+                                                            width: 220,
+                                                            decoration: BoxDecoration(
+                                                                color: primary,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5)),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 215),
+                                                          child: Container(
+                                                            width: 12,
+                                                            height: 12,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color:
+                                                                        primary),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.light_mode,
+                                                          color: black
+                                                              .withOpacity(0.6),
+                                                          size: 18,
+                                                        ),
+                                                        Icon(
+                                                          Icons.light_mode,
+                                                          color: black
+                                                              .withOpacity(0.6),
+                                                          size: 28,
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ); // Replace this with your actual bottom sheet content widget
+                                      },
+                                    );
+                                  },
+                                  icon: const Icon(
+                                    Icons.settings,
+                                    color: white,
+                                  ),
+                                ),
                               ],
                             )
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 12,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15, right: 15),
@@ -629,208 +927,6 @@ class _BookDetailPageState extends State<BookDetailPage> {
           ),
         )
       ],
-    );
-  }
-
-  getBottomSheetListening() {
-    List themes = [
-      Color(0xFFFFFFFF),
-      Color(0xFF000000),
-      Color(0xFFf0cea0),
-    ];
-
-    showMaterialModalBottomSheet(
-      context: context,
-      builder: (context) => SingleChildScrollView(
-        controller: ModalScrollController.of(context),
-        child: Container(
-          width: double.infinity,
-          height: 250,
-          decoration: BoxDecoration(color: primary.withOpacity(0.15)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: List.generate(themes.length, (index) {
-                        if (index == 0) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 12),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: black.withOpacity(0.7),
-                                      width: 0.5),
-                                  shape: BoxShape.circle,
-                                  color: themes[index]),
-                            ),
-                          );
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: themes[index]),
-                          ),
-                        );
-                      }),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              color: primary, shape: BoxShape.circle),
-                          child: Center(
-                            child: Text(
-                              "TT",
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: primary,
-                              ),
-                              shape: BoxShape.circle),
-                          child: Center(
-                            child: Text(
-                              "Tt",
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Container(
-                        height: 4,
-                        decoration: BoxDecoration(
-                            color: black.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Container(
-                        height: 4,
-                        width: 150,
-                        decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 145),
-                      child: Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: primary),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Aa",
-                      style: TextStyle(
-                          fontSize: 13, color: black.withOpacity(0.8)),
-                    ),
-                    Text(
-                      "Aa",
-                      style: TextStyle(
-                          fontSize: 20, color: black.withOpacity(0.8)),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Container(
-                        height: 4,
-                        decoration: BoxDecoration(
-                            color: black.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 4),
-                      child: Container(
-                        height: 4,
-                        width: 220,
-                        decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 215),
-                      child: Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: primary),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.light_mode,
-                      color: black.withOpacity(0.6),
-                      size: 18,
-                    ),
-                    Icon(
-                      Icons.light_mode,
-                      color: black.withOpacity(0.6),
-                      size: 28,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

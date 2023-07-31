@@ -108,6 +108,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (_) => PlayingNowPage(
+                                                context: context,
                                                     img: widget.img,
                                                     title: widget.title,
                                                     subTitle: widget.subTitle,
